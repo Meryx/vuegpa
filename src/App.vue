@@ -1,28 +1,37 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <GPACalculator />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import GPACalculator from './components/GPACalculator.vue'
 
 export default {
+  
   name: 'App',
   components: {
-    HelloWorld
-  }
+    GPACalculator
+  },
+  
 }
 </script>
 
 <style>
-#app {
+html, body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+#app {
+
   margin-top: 60px;
 }
 </style>
