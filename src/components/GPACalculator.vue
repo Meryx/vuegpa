@@ -138,7 +138,7 @@ export default {
             return sum + i
           }, 0
         )
-      this.newGPA = (currentPoints + newPoints)/totalCredits
+      this.newGPA = ((currentPoints + newPoints)/totalCredits).toFixed(2)
       
       
     },
