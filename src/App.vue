@@ -9,7 +9,9 @@
         <li><a href="">GPA Calculator</a></li>
       </ul>
     </div>
-    <GPACalculator />
+    <div class="container">
+      <GPACalculator />
+    </div>
     <footer>
       <p id="footertext">Handcrafted by Anwar to practice Vue.js</p>
     </footer>
@@ -35,7 +37,6 @@ html, body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  overflow: hidden;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -47,9 +48,9 @@ footer {
   margin: 0;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  position: fixed;
-  bottom: 0;
   width: 100%;
+  flex-shrink: 0;
+  align-self: flex-start;
 }
 
 header {
@@ -133,7 +134,15 @@ li a:hover {
 }
 
 #app {
+  overflow-x: hidden;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.container {
+  flex: 1
 }
 
 
