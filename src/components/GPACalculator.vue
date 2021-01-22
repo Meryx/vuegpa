@@ -180,6 +180,7 @@ export default {
     width: 24rem;
     margin: auto;
     max-width: 95%;
+    margin-bottom: 1rem;
   }
 
   .error {

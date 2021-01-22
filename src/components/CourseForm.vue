@@ -3,7 +3,7 @@
       <input type="text" id="course-name" name="course-name" placeholder="e.g. CPCS202"/>
       <input type="text" id="grade" name="grade" v-on:input="handleChangeEvent">
       <input type="text" id="credit" name="credit" v-on:input="handleChangeEvent">
-      <button v-if="isLast" v-on:click="$emit('close-event')" class="close" type="button">&#10006;</button>
+      <button v-if="isLast && courseNumber !== 1" v-on:click="$emit('close-event')" class="close" type="button">&#10006;</button>
   </div>
 
 </template>
