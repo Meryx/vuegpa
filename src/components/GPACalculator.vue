@@ -1,8 +1,6 @@
 <template>
   <div class="container">
 
-    <!--- Title --->
-    <h1>Anwar Vue Practice</h1>
 
     <!--- Main Form --->
     <form v-on:submit.prevent="handleCalculateGPA">

@@ -1,7 +1,20 @@
 <template>
   <div id="app">
+    <header>
+      <h1 id="title">VUE PRACTICE</h1>
+    </header>
+    <div class="subheader">
+      <ul id="navbar">
+        <li><a href="">Home</a></li>
+        <li><a href="">GPA Calculator</a></li>
+      </ul>
+    </div>
     <GPACalculator />
+    <footer>
+      <p id="footertext">Handcrafted by Anwar to practice Vue.js</p>
+    </footer>
   </div>
+  
 </template>
 
 <script>
@@ -30,6 +43,41 @@ html, body {
   height: 100%;
 }
 
+footer {
+  background-color:#2e2f33;
+  margin: 0;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+header {
+  background-color: #057CCA;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  color: white;
+
+}
+
+.subheader {
+  background-color: #0D8DE0;
+  margin-bottom: 1.5rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  color: white;
+  font-weight: bold;
+}
+
+.primary {
+  color: #00E577;
+}
+
+.secondary {
+  color: #0D8DE0;
+}
+
 input {
   border-color: #FFFFFF;
   border-left-color: #FFFFFF;
@@ -45,7 +93,49 @@ input {
   outline: 1pt solid #d3d3d3;
 }
 
-h1 {
-  text-align: center;
+#title {
+  text-align: left;
+  padding: 0;
+  padding-left: 0.8rem;
+  margin: 0;
+  width: 24rem;
+  margin: auto;
 }
+
+#navbar {
+  width: 24rem;
+  margin: auto;
+  list-style-type: none;
+  overflow: hidden;
+  padding: 0;
+
+}
+
+#navbar li {
+  float: left;
+}
+
+#footertext {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+}
+
+li a:hover {
+  color: #00E577;
+  text-decoration: underline;
+}
+
+#app {
+  height: 100%;
+}
+
+
 </style>
