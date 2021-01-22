@@ -30,6 +30,20 @@ html, body {
   height: 100%;
 }
 
+input {
+  border-color: #FFFFFF;
+  border-left-color: #FFFFFF;
+  border-left-width: 0.5rem;
+  border-right-width: 0.5rem;
+  border-top-width: 0;
+  border-bottom-width: 0;
+  padding: 0.063rem;
+  height: 2rem;
+  border-left-style:solid;
+  border-radius: 0.125rem;
+  box-shadow: 0 0 1pt 1pt #d3d3d3;
+}
+
 h1 {
   text-align: center;
 }

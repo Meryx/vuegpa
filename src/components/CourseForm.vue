@@ -44,6 +44,8 @@ export default {
     }
     .close {
         border: none;
+        padding: 0;
+        margin-left: 0.5rem;
     }
     #course-name {
         margin-right: 0.5rem;
