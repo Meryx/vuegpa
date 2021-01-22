@@ -203,6 +203,7 @@ export default {
   }
   .verticalInputContainer label {
     font-weight: bold;
+    margin-bottom: 0.125rem;
   }
 
   .verticalInputContainerRow {
@@ -217,6 +218,10 @@ export default {
     content: "";
     display: block;
     clear: both;
+  }
+
+  .column-header-row {
+    margin-bottom: 0.125rem;
   }
 
 
