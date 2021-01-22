@@ -42,6 +42,7 @@ input {
   border-left-style:solid;
   border-radius: 0.125rem;
   box-shadow: 0 0 1pt 1pt #d3d3d3;
+  outline: 1pt solid #d3d3d3;
 }
 
 h1 {
