@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
     <GPACalculator />
   </div>
 </template>
@@ -27,13 +26,11 @@ html, body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
   overflow-y: scroll;
   height: 100%;
 }
-#app {
 
-  margin-top: 60px;
+h1 {
+  text-align: center;
 }
 </style>

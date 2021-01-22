@@ -1,8 +1,8 @@
 <template>
-  <div class="course">
-      <label>Course #{{ courseNumber }}</label>
-      <input type="text"  name="grade" v-on:input="handleChangeEvent">
-      <input type="text"  name="credit" v-on:input="handleChangeEvent">
+  <div class="courseRow">
+      <input type="text" id="course-name" name="course-name" placeholder="e.g. CPCS202"/>
+      <input type="text" id="grade" name="grade" v-on:input="handleChangeEvent">
+      <input type="text" id="credit" name="credit" v-on:input="handleChangeEvent">
       <button v-if="isLast" v-on:click="$emit('close-event')" class="close" type="button">&#10006;</button>
   </div>
 
@@ -31,29 +31,31 @@ export default {
 </script>
 
 <style scoped>
-    .close{
-        width: 20px;
-        margin: 0;
-        padding: 0;
-        height: 20px;
+    button {
+        position: relative;
+        border-radius: 0.125rem;
+        border-width: 0;
+        outline: none;
+        padding: 0.5rem 1rem;
+        background-color: #FFFFFF;
+        font-weight: bold;
 
+        overflow: hidden;
     }
-    .course{
-        display: flex;
-        background-color: #aaaaaa;
-        padding: 0.5rem;
-        margin: 0  1.5rem 1.5rem 1.5rem;
-        align-items: center;
-        border-radius: 0.5rem;
+    .close {
+        border: none;
     }
-    label {
-        vertical-align: top;
-        width: 5.5rem;
+    #course-name {
+        margin-right: 0.5rem;
+        width: 6rem;
+    }
+    #grade {
+        margin-right: 0.5rem;
+    }
+    .courseRow {
+        margin-bottom: 1rem;
     }
     input {
-        background-color: white;
-        margin-left: 2rem;
-        width: 3.5rem;
-        height: 1.5rem;
+        width: 3.1rem;
     }
 </style>

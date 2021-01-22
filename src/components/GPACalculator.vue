@@ -1,59 +1,65 @@
 <template>
-  <div class="calculator">
+  <div class="container">
+
+    <!--- Title --->
     <h1>Anwar Vue Practice</h1>
-    <h3>GPA calculator</h3>
-    <div class="newGPA">
-      <label class="normalLabel">Current GPA:</label>
-      <input style="border: 1px solid #aaaaaa; width: 10rem;" type="text" v-model.number="currentGPA"/>
-      <label v-if="error" class="error">Missing input parameter!</label>
-    </div>
-    <div class="newGPA">
-      <label class="normalLabel">Current credits:</label>
-      <input style="border: 1px solid #aaaaaa; width: 10rem;" type="text" v-model.number="currentCredits"/>
-    </div>
-    <div class="colHeaders">
-      <label id="grade">Grade</label>
-      <label id="credit">Credit</label>
-    </div>
-    <CourseForm 
-      v-for="i in numberOfCourses" 
-      v-bind:key="i" 
-      v-bind:courseNumber="i" 
-      v-bind:isLast="i === numberOfCourses"
-      v-on:close-event="handleCloseEvent"
-      v-on:change-event="handleChangeEvent"
-      v-bind:grade="grades[i-1]"
-      v-bind:credit="credit[i-1]"
-    />
-    <button type="button" v-on:click="handleAddCourse">Add Course</button>
-    <button type="button" v-on:click="handleCalculateGPA">Calculate!</button>
-    <div class="results">
-      <h3>Results</h3>
-      <div class="newGPA">
-        <label class="normalLabel">New GPA:</labeL>
-        <label class="normalLabel">{{ newGPA }}</label>
-      </div>
 
-    </div>
-    <div class="ins">
+    <!--- Main Form --->
+    <form v-on:submit.prevent="handleCalculateGPA">
+      <fieldset>
+        <legend>GPA Calculator</legend>
+
+        <!--- Error Message --->
+        <label v-if="error" class="error">&#9447; One or more course fields are empty.</label>
+
+        <!--- Current GPA Form --->
+        <div class="verticalInputContainerRow">
+
+          <div class="verticalInputContainer">
+            <label for="GPAcalculator-currentGPA">Current GPA</label>
+            <input id="GPAcalculator-currentGPA" name="GPAcalculator-currentGPA" type="text" v-model.number="currentGPA"/>
+          </div>
+
+          <div class="verticalInputContainer">
+            <label for="GPACalculator-currentCredits">Current Credits</label>
+            <input id="GPACalculator-currentCredits" name="GPACalculator-currentCredits" type="text" v-model.number="currentCredits"/>
+          </div>
+
+        </div>
+
+        
+
+        <!--- Calculator Headers --->
+        <div class="column-header-row">
+          <label id="column-header-course-name" class="column-header" >Course Name</label>
+          <label id="column-header-grade" class="column-header">Grade</label>
+          <label id="column-header-credit" class="column-header">Credit</label>
+        </div>
       
-      <h3>Instructions</h3>
-      <h3>GPA calculator for 5 point systems.  </h3>
-          <ul>
-            <li>A grade of [95-100] weighs 5</li>
-            <li>A grade of [90-94] weighs 4.75</li>
-            <li>A grade of [85-89] weighs 4.5</li>
-            <li>A grade of [80-84] weighs 4</li>
-            <li>A grade of [75-79] weighs 3.5</li>
-            <li>A grade of [70-74] weighs 3</li>
-            <li>A grade of [65-69] weighs 2.5</li>
-            <li>A grade of [60-64] weighs 2</li>
-            <li>A grade of [0-59] weighs 1</li>
-          </ul>
-       
-    </div>
-    
+        <!--- Course List --->
+        <ul>
+          <li is="CourseForm" 
+            v-for="i in numberOfCourses" 
+            v-bind:key="i" 
+            v-bind:courseNumber="i" 
+            v-bind:isLast="i === numberOfCourses"
+            v-on:close-event="handleCloseEvent"
+            v-on:change-event="handleChangeEvent"
+            v-bind:grade="grades[i-1]"
+            v-bind:credit="credit[i-1]"
+          />
+        </ul>
 
+        <div class="buttons">
+          <button id="add-course-button" type="button" v-on:click="handleAddCourse">Add Course</button>
+          <button id="calculate-gpa-button" type="submit">Calculate!</button>
+        </div>
+
+        <div class="results">
+          <label id="result">{{ newGPA }}</label>
+        </div>
+      </fieldset>
+    </form>
   </div>
 </template>
 
@@ -157,71 +163,153 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .ins{
-    text-align: left;
-    margin-bottom: 2rem;
-    margin-top: 0.5rem;
-    border: 1px solid black;
+
+  ul {
+    padding-left: 0;
+    margin-top: 0;
   }
 
-  .ins ul {
-    padding-left: 2rem;
-  }
-  .error{
-    background-color:#ffcccb;
-    padding: 0.5rem;
-    margin: 0.5rem;
-    border: 3px solid red;
-    border-radius: 0.5rem;
-    color: red;
+  legend { 
     font-weight: bold;
   }
 
-  #grade{
-    padding-left: 9.5rem;
-  }
-  #credit {
-    padding-left: 3rem;
-  }
-  .colHeaders {
-    text-align: left;
-  }
 
-  .newGPA {
-    text-align: left;
-    margin-bottom: 1rem;
-    
-  }
-
-  .normalLabel {
-    padding: 1rem;
-  }
   .results {
-    clear: both;
-    align-items: left;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
+    padding-left: 1rem;
   }
-  .calculator {
+
+  .container {
+    width: 24rem;
     margin: auto;
     max-width: 95%;
-    width: 800px;
-    overflow: hidden;
+  }
+
+  .error {
+    display: block;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #B00020;
+    color: #FFFFFF;
+    font-weight: 700;
+  }
+  .verticalInputContainer {
+    display: flex;
+    flex-direction: column;
+    margin-right: 0.33rem;
+  }
+
+  .verticalInputContainer input {
+    width: 7rem;
+  }
+  .verticalInputContainer label {
+    font-weight: bold;
+  }
+
+  .verticalInputContainerRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .verticalInputContainerRow::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+
+  .column-header-row::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .column-header {
+    display: block;
+    float: left;
+    font-weight: bold;
+  }
+  
+  .buttons { 
+    margin-bottom: 1rem;
+  }
+
+  #column-header-course-name {
+    width: 7rem;
+    margin-right: 0.8rem;
+  }
+
+  #column-header-grade {
+    width: 3.1rem;
+    margin-right: 1.6rem;
   }
 
   button {
-    margin: 1rem;
-    float:left;
-    background-color: black;
-    border-radius: 0.5rem;;
-    color: white;
-    height: 30px;
-    width: 90px;
+    position: relative;
+    border-radius: 0.125rem;
+    border-width: 0;
+    outline: none;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    transition: background-color 0.2s;
+    padding: 0.75rem 1.5rem;
+
+    font-weight: bold;
+
+    overflow: hidden;
   }
-  h3 { 
-    text-align: left;
-    padding: 1rem;
+
+  button:before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+    width: 0;
+    padding-top: 0;
+
+    border-radius: 100%;
+
+    background-color: rgba(236, 240, 241, 0.3);
+
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
   }
+
+  button:active:before {
+    width: 120%;
+    padding-top: 120%;
+
+    transition: width .2s ease-out, padding-top .2s ease-out;
+
+  }
+
+  #add-course-button {
+    background-color: rgb(255, 255, 255, 1);
+    color: #00B147;
+    margin-right: 1rem;
+  }
+
+  #calculate-gpa-button {
+    background-color: rgba(0, 229, 117, 1);
+  }
+
+  #calculate-gpa-button:hover, #calculate-gpa-button:focus {
+    background-color: rgba(0, 229, 117, 0.8);
+  }
+
+  #result {
+    font-weight: bolder;
+    font-size: 3rem;
+  }
+
+
 
 </style>
